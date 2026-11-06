@@ -292,9 +292,9 @@ footer .big{font-family:"Aref Ruqaa",serif;font-size:2rem;color:var(--rose)}
       <button class="gbtn" id="gbtn" aria-label="افتحي الهدية">🎁</button>
       <p class="sub" id="gh">اضغطي على الهدية</p>
       <div class="gf" id="gform" hidden>
-        <h3>اتمني أمنية للسنة الجديدة 🌟</h3>
-        <textarea id="wish" rows="4" maxlength="400" placeholder="اكتبي أمنيتك هنا…" aria-label="أمنيتك"></textarea>
-        <button class="go" id="sendw">ابعتي الأمنية 💌</button>
+        <h3>اطلبي أي طلب وأنا هحققهولك 🌟</h3>
+        <textarea id="wish" rows="4" maxlength="400" placeholder="اكتبي طلبك هنا…" aria-label="طلبك"></textarea>
+        <button class="go" id="sendw">ابعتي الطلب 💌</button>
         <div id="gmsg" role="status"></div>
       </div>
     </div>
@@ -417,14 +417,14 @@ vpb.addEventListener("click",function(){au.paused?au.play():au.pause()})}
 var WISH={sheet:"",w3f:"10c7c0f2-5278-4236-b586-8fb14f5e42d5"}; // sheet: رابط Google Apps Script (يكتب في Google Sheets/Excel) | w3f: مفتاح web3forms (يبعت إيميل)
 var gbtn=$("gbtn"),gform=$("gform"),wish=$("wish"),gmsg=$("gmsg"),sendb=$("sendw");
 gbtn.addEventListener("click",function(){gbtn.classList.add("op");$("gh").style.display="none";burst();setTimeout(function(){gbtn.style.display="none";gform.hidden=false;gform.classList.add("show");wish.focus()},650)});
-sendb.addEventListener("click",function(){var v=wish.value.trim();if(!v){gmsg.textContent="اكتبي أمنيتك الأول يا قمر 🌷";return}
+sendb.addEventListener("click",function(){var v=wish.value.trim();if(!v){gmsg.textContent="اكتبي طلبك الأول يا قمر 🌷";return}
 try{localStorage.setItem("hend-wish",v)}catch(e){}
 var jobs=[];
-if(WISH.w3f)jobs.push(fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({access_key:WISH.w3f,subject:"أمنية هند 🎁",from_name:"هند",message:v})}).then(function(r){return r.json()}).then(function(j){if(!j.success)throw new Error("w3f")}));
+if(WISH.w3f)jobs.push(fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({access_key:WISH.w3f,subject:"طلب هند 🎁",from_name:"هند",message:v})}).then(function(r){return r.json()}).then(function(j){if(!j.success)throw new Error("w3f")}));
 if(WISH.sheet)jobs.push(fetch(WISH.sheet,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({wish:v})}));
-if(!jobs.length){gmsg.textContent="(تجربة) الأمنية اتحفظت على جهازك بس، لسه الإرسال مش متفعّل.";return}
+if(!jobs.length){gmsg.textContent="(تجربة) الطلب اتحفظ على جهازك بس، لسه الإرسال مش متفعّل.";return}
 sendb.disabled=true;gmsg.textContent="جاري الإرسال…";
-Promise.all(jobs).then(function(){wish.disabled=true;sendb.style.display="none";gmsg.textContent="وصلت أمنيتك 💗 إن شاء الله تتحقق";burst();balloons()}).catch(function(){sendb.disabled=false;gmsg.textContent="حصلت مشكلة، جربي تاني 🌷"})});
+Promise.all(jobs).then(function(){wish.disabled=true;sendb.style.display="none";gmsg.textContent="وصل طلبك 💗 إن شاء الله هحققهولك";burst();balloons()}).catch(function(){sendb.disabled=false;gmsg.textContent="حصلت مشكلة، جربي تاني 🌷"})});
 
 /* birthday-aware subtitle (birthday: 22 Nov) */
 (function(){var n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate()),b=new Date(n.getFullYear(),10,22),d=Math.round((b-t0)/864e5),el=document.querySelector(".hero p"),txt;
