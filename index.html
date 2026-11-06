@@ -81,6 +81,10 @@ h2{animation:shimmer 7s linear infinite}
 .tw{font-family:"Aref Ruqaa",serif;font-size:1.8rem;color:var(--rose);min-height:2.6em;margin-bottom:12px;line-height:1.6}
 .tw.typing::after{content:"|";margin-inline-start:3px;animation:blink .8s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
+html,body{overflow-x:hidden;width:100%;max-width:100%}
+body{position:relative}
+main{overflow-x:clip}
+@media (max-width:600px){.row:nth-child(n) .pic.rv{transform:translateY(40px)}.row:nth-child(n) .pic.rv.in{transform:none}}
 .dua{max-width:520px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px 20px}
 .dl{font-family:"Aref Ruqaa",serif;font-size:1.35rem;line-height:2.1;opacity:0;transform:translateY(10px);transition:opacity 1s ease,transform 1s ease}
 .dl.show{opacity:1;transform:none}
@@ -366,7 +370,7 @@ cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=M
 raf=parts.length?requestAnimationFrame(anim):null}
 function balloons(){var em=["🎈","🎈","🎈","💗","🎀"];
 for(var i=0;i<14;i++)(function(i){setTimeout(function(){var b=document.createElement("div");b.className="balloon";b.textContent=em[i%em.length];
-b.style.left=(Math.random()*92)+"%";b.style.setProperty("--dx",(Math.random()*120-60)+"px");
+b.style.left=(Math.random()*78)+"%";b.style.setProperty("--dx",(Math.random()*60-30)+"px");
 b.style.animationDuration=(6+Math.random()*4)+"s";document.body.appendChild(b);setTimeout(function(){b.remove()},11000)},i*280)})(i)}
 
 /* story rows: put each photo in src (data URI) */
@@ -436,8 +440,8 @@ if("IntersectionObserver" in window){var dobs=new IntersectionObserver(function(
 
 /* decorations */
 var hero=document.querySelector(".hero"),ck=document.createElement("div");ck.className="cake";ck.textContent="🎂";hero.appendChild(ck);
-for(var q=0;q<9;q++){var sp=document.createElement("span");sp.className="sp";sp.textContent="✨";sp.style.left=(Math.random()*92)+"%";sp.style.top=(Math.random()*95)+"%";sp.style.animationDelay=(-Math.random()*3)+"s";hero.appendChild(sp)}
-for(var k=0;k<22;k++){var pt=document.createElement("div");pt.className="petal";pt.style.left=(Math.random()*100)+"%";var sc=.7+Math.random()*.9;pt.style.width=(14*sc)+"px";pt.style.height=(18*sc)+"px";pt.style.animationDuration=(9+Math.random()*10)+"s";pt.style.animationDelay=(-Math.random()*19)+"s";document.body.appendChild(pt)}
+for(var q=0;q<9;q++){var sp=document.createElement("span");sp.className="sp";sp.textContent="✨";sp.style.left=(Math.random()*86)+"%";sp.style.top=(Math.random()*95)+"%";sp.style.animationDelay=(-Math.random()*3)+"s";hero.appendChild(sp)}
+for(var k=0;k<22;k++){var pt=document.createElement("div");pt.className="petal";pt.style.left=(Math.random()*90)+"%";var sc=.7+Math.random()*.9;pt.style.width=(14*sc)+"px";pt.style.height=(18*sc)+"px";pt.style.animationDuration=(9+Math.random()*10)+"s";pt.style.animationDelay=(-Math.random()*19)+"s";document.body.appendChild(pt)}
 var ft=document.querySelector("footer");
 var TW="ولسه الحكايات كتير… وأحلاها لسه جاي 💗";
 function typeIt(){var tw=$("tw"),chs=Array.from(TW),i=0;tw.textContent="";
