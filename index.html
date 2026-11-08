@@ -533,7 +533,7 @@ function lockTick(){var diff=Math.floor((LOCK_AT-Date.now())/1000);
 if(diff<=0){clearInterval(lockT);document.body.classList.remove("locked");lockEl.classList.add("out");setSub();burst();setTimeout(burst,700);setTimeout(function(){lockEl.remove()},1200);return}
 var f=function(n){return n.toLocaleString("ar-EG")};
 $("ld").textContent=f(Math.floor(diff/86400));$("lh").textContent=f(Math.floor(diff%86400/3600));$("lm").textContent=f(Math.floor(diff%3600/60));$("ls").textContent=f(diff%60)}
-var LOCK_ON=true; /* غيّرها لـ true لتفعيل القفل */
+var LOCK_ON=false; /* غيّرها لـ true لتفعيل القفل */
 if(!LOCK_ON||/[?&]preview/.test(location.search)||Date.now()>=LOCK_AT){lockEl.remove()}
 else{document.body.classList.add("locked");lockTick();lockT=setInterval(lockTick,1000)}
 
